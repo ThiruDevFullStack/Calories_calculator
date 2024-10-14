@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calorie Counter</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'MyAppStatic/css/index.css' %}">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    </style>
+</head>
+<body>
+
+<form method="get">
+    {% csrf_token %}
+    <h2>CALORIES CALCULATOR</h2>
+    <input type="text" name="query" placeholder="Enter food item ">
+    <input type="submit" value="SEARCH">
+
+    {% if name %}
+    <h3>In your food , we found the total of <br>{{calories}} calories</h3>
+    <div class="others_list">
+    <div class="first_four">
+    <h4>Food Name : {{name}}</h4>
+    <h4>Total Fat : {{fat}} g</h4>
+    <h4>Sugar : {{sugar}} g</h4>
+    <h4>Protein : {{protein}} g</h4>
+    </div>
+    <div class="last_four">
+    <h4>Protein : {{protein}} g</h4>
+    <h4>Cholestral : {{cholestrol}} mg</h4>
+    <h4>Carbohydrate : {{carbohydrate}} g</h4>
+    <h4>Fiber : {{fiber}} g</h4>
+    </div>
+    {%  endif %}
+    </div>
+    <div class="exercise">
+        {% if exercise %}
+            <h5 id="content">Do the following exercises to burn your calories</h5>
+            <div class="exercise_1">
+            <div>
+            <img src="{% static 'MyAppStatic/media/walking_man.png' %}" height="50px" width="50px">
+            <p>Walking for {{exercise.walking}} mins</p>
+            <img src="{% static 'MyAppStatic/media/yoga_girl.png' %}" height="50px" width="50px">
+            <p>Yoga for {{exercise.yoga}} mins</p>
+
+            </div>
+            <div>
+            <img src="{% static 'MyAppStatic/media/weightlifting.png' %}" height="50px" width="50px">
+            <p>Weightlifting for {{exercise.weightlifting}} mins</p>
+            <img src="{% static 'MyAppStatic/media/bicycling.png' %}" height="50px" width="50px">
+            <p>Bicycling for {{exercise.bicycling}} mins</p>
+            </div>
+            </div>
+        {% endif %}
+        {% if messages %}
+        {% for message in messages %}
+        <h5>{{message}}</h5>
+        {% endfor %}
+        {% endif %}
+    </div>
+</form>
+</body>
+</html>
