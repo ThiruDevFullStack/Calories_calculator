@@ -118,7 +118,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS=[
-    BASE_DIR.joinpath("Static")
+    BASE_DIR.joinpath("Cal_Static")
 ]
 
 # Default primary key field type
